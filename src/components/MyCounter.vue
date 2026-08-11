@@ -1,25 +1,30 @@
 <template>
   <section>
-    <h3>Counter: {{ count }}</h3>
-    <h3>Square: {{ square }}</h3>
-    <div>
-      <button @click="increment">+1</button>
-      <button @click="decrement">-1</button>
-    </div>
+    <h3>Contador {{ count }}</h3>
+    <h3>Cuadrado {{ squared }}</h3>
+    <!-- v-on:click -->
+    <button @click="count++">+1</button>
+    <button @click="count--">-1</button>
   </section>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed } from 'vue';
 
-const count = ref(0);
-const square = computed(() => count.value * count.value);
+/* Typescript */
+interface Props {
+  value: number;
+}
+const props = defineProps<Props>();
 
-const increment = () => {
-  count.value++;
-};
+/* JS
+const props = defineProps({
+  value: { type: Number, required: true },
+});
+*/
 
-const decrement = () => {
-  count.value--;
-};
+/* Variable reactiva */
+const count = ref(props.value);
+/* Variable computada */
+const squared = computed(() => count.value * count.value);
 </script>

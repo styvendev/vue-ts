@@ -1,10 +1,9 @@
 <template>
-  <div id="app">
-    <h1>Vue 3 + TypeScript Counter</h1>
-    <MyCounter />
-  </div>
+  <h1>Contador</h1>
+  <!-- v-bind -->
+  <MyCounter :value="5" />
 </template>
 
 <script lang="ts" setup>
-import MyCounter from './components/MyCounter.vue';
+import MyCounter from './Components/MyCounter.vue';
 </script>
